@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오뚜기에스에프 건의합니다</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .board-icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <div id="app">
+            <!-- 메인 화면 -->
+            <div id="main-board">
+                <div class="text-center py-8">
+                    <div class="flex items-center justify-center space-x-4 mb-4">
+                        <h1 class="text-3xl font-bold text-gray-800">오뚜기에스에프 건의합니다</h1>
+                        <button id="admin-btn" class="px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors">
+                            🛡️ 관리자 로그인
+                        </button>
+                    </div>
+                    <p class="text-gray-600">더 나은 회사를 만들어가는 여러분의 소중한 의견을 들려주세요</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="board-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer p-6 border-l-4 border-l-transparent hover:border-l-blue-500" data-board="team">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 rounded-full bg-blue-500">
+                                <span class="board-icon text-white">👥</span>
+                            </div>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm font-medium">2건</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">팀장에게 건의합니다</h3>
+                        <p class="text-gray-600 text-sm">팀 내 업무 개선사항이나 협업 관련 건의사항</p>
+                    </div>
+
+                    <div class="board-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer p-6 border-l-4 border-l-transparent hover:border-l-blue-500" data-board="company">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 rounded-full bg-green-500">
+                                <span class="board-icon text-white">🏢</span>
+                            </div>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm font-medium">2건</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">회사에 건의합니다</h3>
+                        <p class="text-gray-600 text-sm">회사 전반적인 제도나 복리후생 관련 건의사항</p>
+                    </div>
+
+                    <div class="board-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer p-6 border-l-4 border-l-transparent hover:border-l-blue-500" data-board="complaint">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 rounded-full bg-red-500">
+                                <span class="board-icon text-white">⚠️</span>
+                            </div>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm font-medium">2건</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">불편해요</h3>
+                        <p class="text-gray-600 text-sm">업무환경이나 시설 관련 불편사항</p>
+                    </div>
+
+                    <div class="board-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer p-6 border-l-4 border-l-transparent hover:border-l-blue-500" data-board="product">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 rounded-full bg-purple-500">
+                                <span class="board-icon text-white">💡</span>
+                            </div>
+                            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm font-medium">3건</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">아이디어 한 스푼!</h3>
+                        <p class="text-gray-600 text-sm">새로운 상품 아이디어나 기존 제품 개선 제안</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">최근 건의사항</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-medium text-gray-800">건강한 저염 라면 개발</h4>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">검토중</span>
+                                <p class="text-xs text-gray-500 mt-1">2025-06-18</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-medium text-gray-800">사내 카페테리아 메뉴 개선</h4>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">검토중</span>
+                                <p class="text-xs text-gray-500 mt-1">2025-06-18</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-medium text-gray-800">사무실 에어컨 온도 조절</h4>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">접수</span>
+                                <p class="text-xs text-gray-500 mt-1">2025-06-18</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-medium text-gray-800">복사기 고장 신고</h4>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">처리중</span>
+                                <p class="text-xs text-gray-500 mt-1">2025-06-17</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-medium text-gray-800">업무 분담에 대한 의견</h4>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="text-right ml-4">
+                                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">완료</span>
+                                <p class="text-xs text-gray-500 mt-1">2025-06-17</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게시판 화면 -->
+            <div id="board-view" style="display: none;">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <button id="back-btn" class="text-blue-500 hover:text-blue-700 font-medium">← 돌아가기</button>
+                        <div class="flex items-center space-x-3">
+                            <div id="board-icon" class="p-2 rounded-full bg-blue-500">
+                                <span class="text-white">👥</span>
+                            </div>
+                            <h1 id="board-title" class="text-2xl font-bold text-gray-800">팀장에게 건의합니다</h1>
+                        </div>
+                    </div>
+                    <button id="write-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
+                        <span>✏️</span>
+                        <span>건의하기</span>
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md">
+                    <div class="p-4 border-b border-gray-200">
+                        <span class="text-gray-700 font-medium">총 <span id="suggestion-count">0</span>건</span>
+                    </div>
+                    
+                    <div id="suggestions-list" class="divide-y divide-gray-200">
+                        <!-- 건의사항 목록이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 작성 폼 -->
+            <div id="write-form" style="display: none;">
+                <div class="flex items-center justify-between mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">건의사항 작성</h1>
+                    <button id="close-form-btn" class="text-gray-500 hover:text-gray-700">✕</button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">게시판 선택</label>
+                        <select id="form-board" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="team">팀장에게 건의합니다</option>
+                            <option value="company">회사에 건의합니다</option>
+                            <option value="complaint">불편해요</option>
+                            <option value="product">아이디어 한 스푼!</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">제목</label>
+                        <input type="text" id="form-title" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="건의사항 제목을 입력해주세요">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">내용</label>
+                        <textarea id="form-content" rows="8" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="건의사항을 자세히 작성해주세요"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">비밀번호 <span class="text-red-500">*</span></label>
+                        <input type="password" id="form-password" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="건의사항 열람용 비밀번호를 설정해주세요">
+                        <p class="text-xs text-gray-500 mt-1">* 작성한 건의사항을 열람할 때 필요합니다</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" id="form-anonymous" checked class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <label for="form-anonymous" class="text-sm text-gray-700">익명으로 작성</label>
+                        </div>
+                        
+                        <div id="author-name-section" style="display: none;">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">작성자 이름</label>
+                            <input type="text" id="form-author" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="실명을 입력해주세요">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button id="cancel-btn" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">취소</button>
+                        <button id="submit-btn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">등록하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 관리자 모달 -->
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="bg-white rounded-lg p-6 w-96 mx-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">관리자 로그인</h2>
+            <p class="text-gray-600 mb-4">관리자 모드에 접속하려면 비밀번호를 입력하세요.</p>
+            
+            <input type="password" id="admin-password" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="관리자 비밀번호를 입력하세요">
+            
+            <div class="flex justify-end space-x-3">
+                <button id="admin-cancel" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">취소</button>
+                <button id="admin-login" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">로그인</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 앱 상태
+        let currentBoard = 'main';
+        let isAdmin = false;
+        let suggestions = {
+            team: [
+                { 
+                    id: 1, 
+                    title: '팀 회의 시간 조정 건의', 
+                    author: '익명', 
+                    date: '2025-06-18', 
+                    status: '검토중', 
+                    preview: '매주 금요일 오후 회의 시간을 조정해주세요...', 
+                    content: '매주 금요일 오후 회의 시간을 조정해주세요.\n\n안녕하세요. 인사팀에 건의사항이 있어 글을 남깁니다.\n\n현재 매주 금요일 오후 4시에 진행되는 팀 회의가 업무 마무리 시간과 겹쳐서 집중도가 떨어지는 것 같습니다.\n\n가능하다면 금요일 오전이나 목요일 오후로 시간을 조정해주시면 더 효율적인 회의가 될 것 같습니다.\n\n검토 부탁드립니다.\n\n감사합니다.',
+                    password: 'pass123' 
+                },
+                { 
+                    id: 2, 
+                    title: '업무 분담에 대한 의견', 
+                    author: '익명', 
+                    date: '2025-06-17', 
+                    status: '완료', 
+                    preview: '프로젝트 업무 분담이 불균등한 것 같습니다...', 
+                    content: '프로젝트 업무 분담이 불균등한 것 같습니다.\n\n현재 진행 중인 프로젝트에서 일부 팀원에게 업무가 집중되고 있어 업무 효율성이 떨어지고 있습니다.\n\n각자의 역량과 경험을 고려한 균등한 업무 분배가 필요할 것 같습니다.\n\n개선방안을 검토해주시면 감사하겠습니다.',
+                    password: 'test456' 
+                }
+            ],
+            company: [
+                { 
+                    id: 3, 
+                    title: '사내 카페테리아 메뉴 개선', 
+                    author: '익명', 
+                    date: '2025-06-18', 
+                    status: '검토중', 
+                    preview: '점심시간 메뉴가 너무 한정적입니다...', 
+                    content: '점심시간 메뉴가 너무 한정적입니다.\n\n사내 카페테리아 이용에 관한 건의사항입니다.\n\n점심시간에 제공되는 메뉴가 한식 위주로만 구성되어 있어 선택의 폭이 제한적입니다.\n\n다양한 국적의 음식이나 샐러드, 간단한 양식 메뉴 등을 추가로 제공해주시면 직원들의 만족도가 높아질 것 같습니다.\n\n또한 채식주의자를 위한 메뉴도 고려해주시면 감사하겠습니다.\n\n검토 바랍니다.',
+                    password: 'abc789' 
+                },
+                { 
+                    id: 4, 
+                    title: '주차공간 확대 요청', 
+                    author: '익명', 
+                    date: '2025-06-16', 
+                    status: '답변완료', 
+                    preview: '직원 주차공간이 부족합니다...', 
+                    content: '직원 주차공간이 부족합니다.\n\n출근 시간에 주차공간을 찾기가 어려워 지각을 하는 경우가 종종 발생합니다.\n\n인근 부지 임대나 다층 주차장 건설 등을 통한 주차공간 확대를 검토해주시면 좋겠습니다.\n\n감사합니다.',
+                    password: 'def123' 
+                }
+            ],
+            complaint: [
+                { 
+                    id: 5, 
+                    title: '사무실 에어컨 온도 조절', 
+                    author: '익명', 
+                    date: '2025-06-18', 
+                    status: '접수', 
+                    preview: '사무실이 너무 춥습니다...', 
+                    content: '사무실이 너무 춥습니다.\n\n사무실 에어컨 온도 조절에 관한 불편사항입니다.\n\n최근 날씨가 더워지면서 에어컨을 강하게 틀고 있는데, 일부 자리에서는 너무 춥게 느껴집니다.\n\n특히 에어컨 바로 아래 자리의 경우 긴팔을 입어도 추울 정도입니다.\n\n온도를 조금 높이거나 풍향 조절을 통해 개선해주시면 좋겠습니다.\n\n감사합니다.',
+                    password: 'xyz456' 
+                },
+                { 
+                    id: 6, 
+                    title: '복사기 고장 신고', 
+                    author: '익명', 
+                    date: '2025-06-17', 
+                    status: '처리중', 
+                    preview: '3층 복사기가 자주 고장납니다...', 
+                    content: '3층 복사기가 자주 고장납니다.\n\n지난주부터 3층 복사기가 계속 종이 걸림이나 토너 부족 등의 문제가 발생하고 있습니다.\n\n업무에 지장이 있으니 점검이나 교체를 부탁드립니다.',
+                    password: 'qwe789' 
+                }
+            ],
+            product: [
+                { 
+                    id: 7, 
+                    title: '건강한 저염 라면 개발', 
+                    author: '김영수', 
+                    date: '2025-06-18', 
+                    status: '검토중', 
+                    preview: '건강을 생각하는 소비자들을 위한 저염 라면...', 
+                    content: '건강을 생각하는 소비자들을 위한 저염 라면을 제안합니다.\n\n최근 건강에 대한 관심이 높아지면서 저염 식품에 대한 수요가 증가하고 있습니다.\n\n기존 라면 대비 나트륨 함량을 30% 이상 줄이면서도 맛은 유지할 수 있는 저염 라면 시리즈를 개발해보면 어떨까요?\n\n멸치, 다시마 등 천연 조미료를 활용하여 깊은 맛을 낼 수 있을 것 같습니다.\n\n건강한 라면으로 새로운 시장을 개척할 수 있을 것 같습니다.',
+                    password: 'prod123' 
+                },
+                { 
+                    id: 8, 
+                    title: '간편한 도시락용 밥 제품', 
+                    author: '익명', 
+                    date: '2025-06-17', 
+                    status: '개발검토', 
+                    preview: '1인 가구와 직장인을 위한 간편 도시락 밥...', 
+                    content: '1인 가구와 직장인을 위한 간편 도시락 밥을 제안합니다.\n\n혼밥족과 바쁜 직장인들이 늘어나면서 간편하게 먹을 수 있는 도시락용 밥에 대한 수요가 높습니다.\n\n전자레인지에 2분만 데우면 되는 개별 포장 밥 제품을 개발해보면 좋겠습니다.\n\n현미밥, 잡곡밥, 흰쌀밥 등 다양한 종류로 구성하고, 비빔밥용 양념장도 함께 제공하면 더욱 좋을 것 같습니다.\n\n편의점이나 온라인 판매를 통해 접근성을 높이면 시장성이 클 것 같습니다.',
+                    password: 'idea456' 
+                },
+                { 
+                    id: 9, 
+                    title: '비건 컵라면 시리즈', 
+                    author: '익명', 
+                    date: '2025-06-16', 
+                    status: '접수', 
+                    preview: '채식주의자들을 위한 완전 비건 컵라면...', 
+                    content: '채식주의자들을 위한 완전 비건 컵라면을 제안합니다.\n\n최근 비건 인구가 늘어나면서 완전 채식 제품에 대한 수요가 증가하고 있습니다.\n\n동물성 원료를 전혀 사용하지 않은 비건 컵라면 시리즈를 개발하면 좋겠습니다.\n\n콩고기, 버섯, 채소 등을 활용한 다양한 맛으로 구성하고, 비건 인증마크도 획득하면 차별화가 될 것 같습니다.\n\n젊은 층과 건강 지향 소비자들에게 어필할 수 있는 제품이 될 것 같습니다.',
+                    password: 'vegan789' 
+                }
+            ]
+        };
+
+        // DOM 요소들
+        const mainBoard = document.getElementById('main-board');
+        const boardView = document.getElementById('board-view');
+        const writeForm = document.getElementById('write-form');
+        const adminModal = document.getElementById('admin-modal');
+
+        // 이벤트 리스너 등록
+        function initEventListeners() {
+            // 게시판 카드 클릭 이벤트
+            document.querySelectorAll('.board-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const boardId = card.dataset.board;
+                    showBoard(boardId);
+                });
+            });
+
+            // 돌아가기 버튼
+            document.getElementById('back-btn').addEventListener('click', () => {
+                showMain();
+            });
+
+            // 건의하기 버튼
+            document.getElementById('write-btn').addEventListener('click', () => {
+                showWriteForm();
+            });
+
+            // 폼 닫기 버튼
+            document.getElementById('close-form-btn').addEventListener('click', () => {
+                showMain();
+            });
+
+            // 취소 버튼
+            document.getElementById('cancel-btn').addEventListener('click', () => {
+                showMain();
+            });
+
+            // 관리자 로그인 버튼
+            document.getElementById('admin-btn').addEventListener('click', () => {
+                if (isAdmin) {
+                    isAdmin = false;
+                    document.getElementById('admin-btn').innerHTML = '🛡️ 관리자 로그인';
+                    document.getElementById('admin-btn').className = 'px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors';
+                } else {
+                    adminModal.style.display = 'flex';
+                }
+            });
+
+            // 관리자 모달 이벤트
+            document.getElementById('admin-cancel').addEventListener('click', () => {
+                adminModal.style.display = 'none';
+                document.getElementById('admin-password').value = '';
+            });
+
+            document.getElementById('admin-login').addEventListener('click', () => {
+                const password = document.getElementById('admin-password').value;
+                if (password === '3691') {
+                    isAdmin = true;
+                    adminModal.style.display = 'none';
+                    document.getElementById('admin-password').value = '';
+                    document.getElementById('admin-btn').innerHTML = '🛡️ 관리자 로그아웃';
+                    document.getElementById('admin-btn').className = 'px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200 transition-colors';
+                    alert('관리자 로그인 성공!');
+                } else {
+                    alert('관리자 비밀번호가 올바르지 않습니다.');
+                    document.getElementById('admin-password').value = '';
+                }
+            });
+
+            // 익명 체크박스 이벤트
+            document.getElementById('form-anonymous').addEventListener('change', (e) => {
+                const authorSection = document.getElementById('author-name-section');
+                if (e.target.checked) {
+                    authorSection.style.display = 'none';
+                } else {
+                    authorSection.style.display = 'block';
+                }
+            });
+
+            // 등록하기 버튼
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                const title = document.getElementById('form-title').value;
+                const content = document.getElementById('form-content').value;
+                const password = document.getElementById('form-password').value;
+                const board = document.getElementById('form-board').value;
+                const anonymous = document.getElementById('form-anonymous').checked;
+                const authorName = document.getElementById('form-author').value;
+
+                if (!title || !content || !password) {
+                    alert('제목, 내용, 비밀번호를 모두 입력해주세요.');
+                    return;
+                }
+
+                if (!anonymous && !authorName) {
+                    alert('실명으로 작성할 경우 이름을 입력해주세요.');
+                    return;
+                }
+
+                const newSuggestion = {
+                    id: Date.now(),
+                    title: title,
+                    author: anonymous ? '익명' : authorName,
+                    date: new Date().toISOString().split('T')[0],
+                    status: '접수',
+                    preview: content.substring(0, 50) + '...',
+                    content: content,
+                    password: password
+                };
+
+                suggestions[board].push(newSuggestion);
+                
+                // 폼 초기화
+                document.getElementById('form-title').value = '';
+                document.getElementById('form-content').value = '';
+                document.getElementById('form-password').value = '';
+                document.getElementById('form-author').value = '';
+                document.getElementById('form-anonymous').checked = true;
+                document.getElementById('author-name-section').style.display = 'none';
+
+                alert('건의사항이 성공적으로 등록되었습니다!');
+                showMain();
+            });
+
+            // 엔터키 이벤트
+            document.getElementById('admin-password').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    document.getElementById('admin-login').click();
+                }
+            });
+        }
+
+        // 화면 전환 함수들
+        function showMain() {
+            mainBoard.style.display = 'block';
+            boardView.style.display = 'none';
+            writeForm.style.display = 'none';
+            currentBoard = 'main';
+        }
+
+        function showBoard(boardId) {
+            mainBoard.style.display = 'none';
+            boardView.style.display = 'block';
+            writeForm.style.display = 'none';
+            currentBoard = boardId;
+
+            // 게시판 정보 업데이트
+            const boardInfo = {
+                team: { name: '팀장에게 건의합니다', icon: '👥', color: 'bg-blue-500' },
+                company: { name: '회사에 건의합니다', icon: '🏢', color: 'bg-green-500' },
+                complaint: { name: '불편해요', icon: '⚠️', color: 'bg-red-500' },
+                product: { name: '아이디어 한 스푼!', icon: '💡', color: 'bg-purple-500' }
+            };
+
+            const info = boardInfo[boardId];
+            document.getElementById('board-title').textContent = info.name;
+            document.getElementById('board-icon').innerHTML = `<span class="text-white">${info.icon}</span>`;
+            document.getElementById('board-icon').className = `p-2 rounded-full ${info.color}`;
+            document.getElementById('suggestion-count').textContent = suggestions[boardId].length;
+
+            // 건의사항 목록 업데이트
+            const suggestionsList = document.getElementById('suggestions-list');
+            suggestionsList.innerHTML = '';
+
+            suggestions[boardId].forEach(item => {
+                const statusColor = getStatusColor(item.status);
+                const suggestionDiv = document.createElement('div');
+                suggestionDiv.className = 'p-4 hover:bg-gray-50 cursor-pointer transition-colors';
+                suggestionDiv.onclick = () => handleSuggestionClick(item.id);
+                
+                suggestionDiv.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <h3 class="font-medium text-gray-800">${item.title}</h3>
+                                ${!isAdmin ? '<span class="icon">🔒</span>' : ''}
+                            </div>
+                            ${isAdmin ? `<p class="text-gray-600 text-sm mb-3">${item.preview}</p>` : ''}
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <div class="flex items-center space-x-1">
+                                    <span>👤</span>
+                                    <span>${item.author}</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <span>🕒</span>
+                                    <span>${item.date}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 rounded-full text-xs font-medium ${statusColor}">${item.status}</span>
+                    </div>
+                `;
+                suggestionsList.appendChild(suggestionDiv);
+            });
+
+            // 폼 게시판 선택 업데이트
+            document.getElementById('form-board').value = boardId;
+        }
+
+        function showWriteForm() {
+            mainBoard.style.display = 'none';
+            boardView.style.display = 'none';
+            writeForm.style.display = 'block';
+        }
+
+        function getStatusColor(status) {
+            switch(status) {
+                case '완료':
+                case '답변완료':
+                    return 'bg-green-100 text-green-800';
+                case '검토중':
+                case '처리중':
+                case '개발검토':
+                    return 'bg-yellow-100 text-yellow-800';
+                case '접수':
+                    return 'bg-blue-100 text-blue-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        function handleSuggestionClick(id) {
+            if (isAdmin) {
+                // 모든 게시판에서 해당 ID의 건의사항 찾기
+                let foundSuggestion = null;
+                for (let board in suggestions) {
+                    foundSuggestion = suggestions[board].find(item => item.id === id);
+                    if (foundSuggestion) break;
+                }
+                
+                if (foundSuggestion) {
+                    alert(`제목: ${foundSuggestion.title}\n\n내용:\n${foundSuggestion.content}\n\n작성자: ${foundSuggestion.author}\n날짜: ${foundSuggestion.date}\n상태: ${foundSuggestion.status}`);
+                }
+            } else {
+                const password = prompt('비밀번호를 입력하세요:');
+                if (password) {
+                    // 모든 게시판에서 해당 ID의 건의사항 찾기
+                    let foundSuggestion = null;
+                    for (let board in suggestions) {
+                        foundSuggestion = suggestions[board].find(item => item.id === id);
+                        if (foundSuggestion) break;
+                    }
+                    
+                    if (foundSuggestion && password === foundSuggestion.password) {
+                        alert(`제목: ${foundSuggestion.title}\n\n내용:\n${foundSuggestion.content}\n\n작성자: ${foundSuggestion.author}\n날짜: ${foundSuggestion.date}\n상태: ${foundSuggestion.status}`);
+                    } else {
+                        alert('비밀번호가 올바르지 않습니다.');
+                    }
+                }
+            }
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initEventListeners();
+            showMain();
+        });
+    </script>
+</body>
+</html>
